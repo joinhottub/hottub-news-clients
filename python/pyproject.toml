@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hottub-news"
+version = "0.1.0"
+description = "Client and agent tools for Hottub News: worldwide news, deduplicated into stories across outlets and languages. Free, no key."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Hottub, Inc." }]
+keywords = ["news", "api", "mcp", "agents", "langchain", "llamaindex", "llm", "tools", "gdelt", "rss"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+langchain = ["langchain-core>=0.3", "pydantic>=2"]
+llamaindex = ["llama-index-core>=0.12", "pydantic>=2"]
+test = ["pytest>=8"]
+
+[project.urls]
+Homepage = "https://hottub.news"
+Documentation = "https://hottub.news/llms.txt"
+OpenAPI = "https://hottub.news/openapi.json"
+Company = "https://joinhottub.com"
+Source = "https://github.com/joinhottub/hottub-news-clients"
+Issues = "https://github.com/joinhottub/hottub-news-clients/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hottub_news"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/hottub_news", "tests", "README.md", "LICENSE"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
